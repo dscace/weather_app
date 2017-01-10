@@ -1,0 +1,62 @@
+<style type="text/css">
+  body {
+    background: url(<%= @url %>) no-repeat center center fixed; 
+    background-size: cover;
+    font-family: 'Lato', sans-serif;
+    }
+</style>
+
+  <div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well" style="margin-top: 50px">
+			<h1>Look Up Your Local Forecast</h1>
+			<p>What's the weather like in your city?</p>
+      <!--A form to take city and state-->
+      <div>
+      	<%= form_tag index_path do %>
+      	<!-- We'll come right back to this page after submitting the form -->
+      		<%= text_field_tag :city, nil, placeholder: "City Name" %><br />
+      		<%= select_tag :state, options_for_select(@states), :prompt => "Please select" %><br />
+      		<%= submit_tag "Check Weather" %>
+      	<% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Our response from wunderground's API -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="well">
+
+<!-- Bring in the instance variable from our controller to display on our index page. -->
+<!-- Check to make sure @location is not empty or nil and  that the API did not return an error -->
+<% if @location != nil && @location != "" && (@error == "" || @error == nil) %>
+      <h1>Forecast for <%= @location %></h1>
+
+      <div class="row">
+        <div class="col-md-7">
+	  <p><em>What's the weather like?</em></p>
+          <p>
+	    Temperature is: <%= @temp_f %>° / <%= @temp_c %>° 
+	  </p>
+	  <p>
+	    Feels like: <%= @real_feel_f %>°
+    	  </p>
+        </div>
+        <div class="col-md-5">
+	  <p>
+	    <%= @weather_words %> <%= image_tag @weather_icon %>
+	  </p>
+	  <p>
+	    <%= link_to "Full Forecast", @forecast_link, target: "_blank" %>
+	  </p>
+        </div>
+      </div>
+
+     <% else %>
+     
+     <p style="text-align: center">Welcome to my Weather App!</p> 
+<% end %>
+    </div>
+  </div>
+</div>
