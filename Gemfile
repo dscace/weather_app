@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 group :assets do
   # other asset gems
   gem 'asset_sync'
+  gem 'fog-aws'
 end
 
 # Use Capistrano for deployment
