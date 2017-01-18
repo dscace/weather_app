@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "asset_sync", "~> 1.0.0"
 gem 'bootstrap-sass'
 gem 'wunderground'
 gem 'httparty'
@@ -33,12 +34,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-group :assets do
-  # other asset gems
-  gem 'asset_sync'
-  gem 'fog-aws'
-end
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
