@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "asset_sync", "~> 1.0.0"
+gem "fog-aws"
 gem 'bootstrap-sass'
 gem 'wunderground'
 gem 'httparty'
